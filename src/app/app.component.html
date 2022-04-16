@@ -1,0 +1,19 @@
+
+<h2>Пример вставки компонента</h2>
+
+<code>&lt;app-example&gt;&lt;/app-example&gt;</code>
+
+<br />Так все работает: <app-example></app-example>
+<br /><br />
+Но если попробовать встроить &lt;app-example&gt; динамически, то он не отработает.
+<br /><br />
+
+<hr /><br />
+
+Пример динамической вставки: из инпута читается HTML и рендерится в div под кнопкой<br /><br />
+<textarea [(ngModel)]="htmlString"></textarea>
+
+<br /><button type="button" (click)="embedContent()">embed content</button><br />
+
+<div [innerHtml]="dynamicContent"></div>
+
