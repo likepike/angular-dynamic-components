@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,19 +6,25 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 
-
-
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'test-angular';
 
   public dynamicContent: any;
   public htmlString: any;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor() {
   }
 
   public embedContent(): void {
-      this.dynamicContent = this.sanitizer.bypassSecurityTrustHtml(this.htmlString);
+      this.dynamicContent = this.htmlString;
+  }
+
+  ngOnInit() {
+      console.log('AppComponent OnInit');
+  }
+
+  ngOnDestroy() {
+      console.log('AppComponent OnDestroy');
   }
 
 }
